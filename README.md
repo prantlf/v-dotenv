@@ -54,6 +54,16 @@ import prantlf.dotenv { load_env }
 load_env(true)!
 ```
 
+### load_user_env(overwrite bool) !bool
+
+Loads and parses the contents of the file `.env` from the user's home directory, sets environment variables. Returns `true` if the file was found and processed. Returns `false` early, if the file wasn't found. If the argument `overwrite` is `true`, existing environment variables will be overwritten with values from the `.env` file, otherwise they will retain their previous values.
+
+```go
+import prantlf.dotenv { load_user_env }
+
+load_user_env(true)!
+```
+
 ### load_file(file string, overwrite bool) !bool
 
 Loads and parses the contents of the specified file from the current directory, sets environment variables. Returns `true` if the file was found and processed. Returns `false` early, if the file wasn't found. If the argument `overwrite` is `true`, existing environment variables will be overwritten with values from the specified file, otherwise they will retain their previous values.

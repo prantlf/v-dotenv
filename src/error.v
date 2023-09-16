@@ -1,8 +1,8 @@
 module dotenv
 
-import os
-import strings
-import term
+import os { getenv }
+import strings { Builder, new_builder }
+import term { can_show_color_on_stderr }
 
 [noinit]
 pub struct LoadError {
@@ -29,10 +29,10 @@ pub fn (e &LoadError) msg_full() string {
 	last_line := e.line - 1 + before.len + after.len
 	num_len := last_line.str().len + 1
 
-	mut builder := strings.new_builder(64)
+	mut builder := new_builder(64)
 	mut line_num := e.line - before.len
 
-	colors := term.can_show_color_on_stderr() && os.getenv('NO_COLOR').len == 0
+	colors := can_show_color_on_stderr() && getenv('NO_COLOR').len == 0
 	mut on := ''
 	mut off := ''
 	if colors {
@@ -47,7 +47,7 @@ pub fn (e &LoadError) msg_full() string {
 	return '${on}${e.reason}${off}:\n${builder.str()}'
 }
 
-fn write_context(mut builder strings.Builder, lines []string, start_line int, num_len int, eol_before bool, colors bool) int {
+fn write_context(mut builder Builder, lines []string, start_line int, num_len int, eol_before bool, colors bool) int {
 	mut on := ''
 	mut off := ''
 	if colors {
@@ -80,7 +80,7 @@ fn write_context(mut builder strings.Builder, lines []string, start_line int, nu
 	return line_num
 }
 
-fn write_pointer(mut builder strings.Builder, num_len int, head_len int, colors bool) {
+fn write_pointer(mut builder Builder, num_len int, head_len int, colors bool) {
 	mut on1 := ''
 	mut on2 := ''
 	mut off := ''

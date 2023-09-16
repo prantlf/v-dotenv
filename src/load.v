@@ -1,6 +1,6 @@
 module dotenv
 
-import os { exists, read_file, setenv }
+import os { exists, getenv_opt, join_path_single, read_file, setenv }
 import prantlf.debug { new_debug }
 import prantlf.strutil { starts_with_within_nochk }
 
@@ -32,6 +32,31 @@ fn (p &Parser) fail(offset int, msg string) LoadError {
 
 pub fn load_env(overwrite bool) !bool {
 	return load_file('.env', overwrite)!
+}
+
+pub fn load_user_env(overwrite bool) !bool {
+	return if dir := get_home_dir() {
+		path := join_path_single(dir, '.env')
+		load_file(path, overwrite)!
+	} else {
+		false
+	}
+}
+
+fn get_home_dir() ?string {
+	var_name := $if windows {
+		'USERPROFILE'
+	} $else {
+		'HOME'
+	}
+	return if home_dir := getenv_opt(var_name) {
+		dhome_dir := d.rwd(home_dir)
+		d.log('environment variable "%s" poins to "%s"', var_name, dhome_dir)
+		home_dir
+	} else {
+		d.log('environment variable "%s" is empty', var_name)
+		none
+	}
 }
 
 pub fn load_file(file string, overwrite bool) !bool {
