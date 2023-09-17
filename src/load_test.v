@@ -44,13 +44,25 @@ question=unknown', true)!
 fn test_parse_empty_val() {
 	unsetenv('answer')
 	load_text('answer=', true)!
-	assert getenv_opt('answer')? == ''
+	$if windows {
+		if _ := getenv_opt('answer') {
+			assert false
+		}
+	} $else {
+		assert getenv_opt('answer')? == ''
+	}
 }
 
 fn test_parse_whitespace_val() {
 	unsetenv('answer')
 	load_text('answer= ', true)!
-	assert getenv_opt('answer')? == ''
+	$if windows {
+		if _ := getenv_opt('answer') {
+			assert false
+		}
+	} $else {
+		assert getenv_opt('answer')? == ''
+	}
 }
 
 fn test_parse_no_overwrite() {
