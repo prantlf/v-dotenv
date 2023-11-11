@@ -51,7 +51,7 @@ fn get_home_dir() ?string {
 	}
 	return if home_dir := getenv_opt(var_name) {
 		dhome_dir := dotenv.d.rwd(home_dir)
-		dotenv.d.log('environment variable "%s" poins to "%s"', var_name, dhome_dir)
+		dotenv.d.log('environment variable "%s" points to "%s"', var_name, dhome_dir)
 		home_dir
 	} else {
 		dotenv.d.log('environment variable "%s" is empty', var_name)
