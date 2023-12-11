@@ -99,7 +99,7 @@ fn load_text(source string, overwrite bool) ! {
 	}
 }
 
-[direct_array_access]
+@[direct_array_access]
 fn (mut p Parser) load_variable(from int) !int {
 	source := p.source
 	mut name := ''
@@ -199,7 +199,7 @@ fn (mut p Parser) load_variable(from int) !int {
 	return i
 }
 
-[direct_array_access]
+@[direct_array_access]
 fn (mut p Parser) skip_line(from int) int {
 	source := p.source
 	mut i := from
@@ -215,7 +215,7 @@ fn (mut p Parser) skip_line(from int) int {
 	return i
 }
 
-[direct_array_access]
+@[direct_array_access]
 fn (p &Parser) skip_space(from int) int {
 	source := p.source
 	mut i := from
@@ -232,7 +232,7 @@ fn (p &Parser) skip_space(from int) int {
 	return i
 }
 
-[direct_array_access]
+@[direct_array_access]
 fn (mut p Parser) skip_whitespace(from int) int {
 	source := p.source
 	mut i := from
@@ -257,7 +257,7 @@ fn (mut p Parser) skip_whitespace(from int) int {
 	return i
 }
 
-[direct_array_access]
+@[direct_array_access]
 fn (mut p Parser) skip_comment(from int) int {
 	source := p.source
 	mut i := from + 1
@@ -273,7 +273,7 @@ fn (mut p Parser) skip_comment(from int) int {
 	return i
 }
 
-[direct_array_access]
+@[direct_array_access]
 fn (p &Parser) after_bom() int {
 	if p.source.len >= 3 {
 		unsafe {

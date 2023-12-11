@@ -4,7 +4,7 @@ import os { getenv }
 import strings { Builder, new_builder }
 import term { can_show_color_on_stderr }
 
-[noinit]
+@[noinit]
 pub struct LoadError {
 	Error
 	head_context string
@@ -112,7 +112,7 @@ fn before_error(input string, offset int) (string, string) {
 	}
 
 	mut head := ''
-	eol := inline.last_index_u8(`\n`) + 1
+	eol := inline.index_u8_last(`\n`) + 1
 	if eol > 0 {
 		head = inline[..eol]
 		inline = inline[eol..]
