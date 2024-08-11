@@ -1,5 +1,11 @@
 # Changes
 
+## [0.1.2](https://github.com/prantlf/v-dotenv/compare/v0.1.1...v0.1.2) (2024-08-11)
+
+### Bug Fixes
+
+* Replace deprecated index_u8_last with last_index_u8 ([13816cd](https://github.com/prantlf/v-dotenv/commit/13816cd2031f4acdd781daa40a8e75e123da6fff))
+
 ## [0.1.1](https://github.com/prantlf/v-dotenv/compare/v0.1.0...v0.1.1) (2023-12-11)
 
 ### Bug Fixes
