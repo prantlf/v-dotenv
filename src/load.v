@@ -19,14 +19,14 @@ fn (p &Parser) fail(offset int, msg string) LoadError {
 	tail_error, tail_context := after_error(p.source, offset)
 
 	return LoadError{
-		reason: msg
+		reason:       msg
 		head_context: head_context
-		head_error: head_error
-		tail_error: tail_error
+		head_error:   head_error
+		tail_error:   tail_error
 		tail_context: tail_context
-		offset: offset + 1
-		line: p.line_start + 1
-		column: offset - p.line_start + 1
+		offset:       offset + 1
+		line:         p.line_start + 1
+		column:       offset - p.line_start + 1
 	}
 }
 
@@ -50,38 +50,38 @@ fn get_home_dir() ?string {
 		'HOME'
 	}
 	return if home_dir := getenv_opt(var_name) {
-		dhome_dir := dotenv.d.rwd(home_dir)
-		dotenv.d.log('environment variable "%s" points to "%s"', var_name, dhome_dir)
+		dhome_dir := d.rwd(home_dir)
+		d.log('environment variable "%s" points to "%s"', var_name, dhome_dir)
 		home_dir
 	} else {
-		dotenv.d.log('environment variable "%s" is empty', var_name)
+		d.log('environment variable "%s" is empty', var_name)
 		none
 	}
 }
 
 pub fn load_file(file string, overwrite bool) !bool {
 	if !exists(file) {
-		dotenv.d.log('dotenv file "%s" not found', file)
+		d.log('dotenv file "%s" not found', file)
 		return false
 	}
-	dotenv.d.log('load dotenv file "%s"', file)
+	d.log('load dotenv file "%s"', file)
 	contents := read_file(file)!
 	load_text(contents, overwrite)!
 	return true
 }
 
 fn load_text(source string, overwrite bool) ! {
-	if dotenv.d.is_enabled() {
-		short_s := dotenv.d.shorten(source)
-		dotenv.d.log_str('parse dotenv "${short_s}" (length ${source.len})')
-		dotenv.d.stop_ticking()
+	if d.is_enabled() {
+		short_s := d.shorten(source)
+		d.log_str('parse dotenv "${short_s}" (length ${source.len})')
+		d.stop_ticking()
 		defer {
-			dotenv.d.start_ticking()
+			d.start_ticking()
 		}
 	}
 
 	mut p := &Parser{
-		source: source
+		source:    source
 		overwrite: overwrite
 	}
 
@@ -93,9 +93,9 @@ fn load_text(source string, overwrite bool) ! {
 		i = p.load_variable(i)!
 	}
 
-	if dotenv.d.is_enabled() {
-		dotenv.d.start_ticking()
-		dotenv.d.log_str('dotenv finished')
+	if d.is_enabled() {
+		d.start_ticking()
+		d.log_str('dotenv finished')
 	}
 }
 
@@ -195,7 +195,7 @@ fn (mut p Parser) load_variable(from int) !int {
 	val := source[start..end]
 
 	setenv(name, val, p.overwrite)
-	dotenv.d.log('set variable "%s" to "%s"', name, val)
+	d.log('set variable "%s" to "%s"', name, val)
 	return i
 }
 
