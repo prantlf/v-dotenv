@@ -1,5 +1,11 @@
 # Changes
 
+## [0.1.3](https://github.com/prantlf/v-dotenv/compare/v0.1.2...v0.1.3) (2024-11-16)
+
+### Bug Fixes
+
+* Fix sources for the new V compiler ([8415955](https://github.com/prantlf/v-dotenv/commit/84159559b9a46b175ea8d7e58fb779f5d3e923c7))
+
 ## [0.1.2](https://github.com/prantlf/v-dotenv/compare/v0.1.1...v0.1.2) (2024-08-11)
 
 ### Bug Fixes
