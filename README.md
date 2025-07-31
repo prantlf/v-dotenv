@@ -69,7 +69,7 @@ load_user_env(true)!
 Loads and parses the contents of the specified file from the current directory, sets environment variables. Returns `true` if the file was found and processed. Returns `false` early, if the file wasn't found. If the argument `overwrite` is `true`, existing environment variables will be overwritten with values from the specified file, otherwise they will retain their previous values.
 
 ```go
-import prantlf.dotenv { load_env }
+import prantlf.dotenv { load_file }
 
 load_file('.env.local', true)!
 ```
