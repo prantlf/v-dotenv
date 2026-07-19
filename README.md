@@ -28,7 +28,7 @@ The following types and functions are exported:
 
 ### LoadError
 
-The following error will be thrown if a malformed file is loaded: 
+The following error will be thrown if a malformed file is loaded:
 
 ```go
 struct LoadError {
@@ -105,7 +105,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## License
 
-Copyright (c) 2023-2025 Ferdinand Prantl
+Copyright (c) 2023-2026 Ferdinand Prantl
 
 Licensed under the MIT license.
 
