@@ -179,6 +179,7 @@ fn (mut p Parser) load_variable(from int) !int {
 				}
 			}
 		}
+
 		i++
 	}
 	mut end := if last_space > 0 {
