@@ -1,5 +1,11 @@
 # Changes
 
+## [0.2.0](https://github.com/prantlf/v-dotenv/compare/v0.1.3...v0.2.0) (2026-07-19)
+
+### Features
+
+* Adapt to breaking changes in V ([9090a32](https://github.com/prantlf/v-dotenv/commit/9090a329c73e243b97acd349010595e400315761))
+
 ## [0.1.3](https://github.com/prantlf/v-dotenv/compare/v0.1.2...v0.1.3) (2024-11-16)
 
 ### Bug Fixes
